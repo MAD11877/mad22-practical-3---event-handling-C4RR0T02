@@ -1,0 +1,49 @@
+name: MAD Practical 3.0
+on:
+  push:
+    branches: [main, master]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Source Codes
+        uses: actions/checkout@v2
+        
+      - name: Checkout Test Scripts
+        uses: actions/checkout@v2
+        with:
+          repository: lowkh/MAD_JunitPrac2
+          path: testDirectory
+      - name: Check files
+        run: |
+            ls
+
+      - name: Setup go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.13.7'
+      
+      - name: Run Tests
+        run: |
+          UPATH=$(find . -path \*app/src/main/java/*/*.java | head -n 1 | sed 's_/[a-zA-Z0-9$]*[.]java__' | sed 's_./app/src/main/java/__' | sed 's_/_._g')
+          echo $UPATH
+          sed -i "s_sg.*[;]_$UPATH;_" testDirectory/*.java
+          head -1 testDirectory/MainActivityTest.java
+          cp app/src/main/res/layout/activity_main.xml testDirectory/test.xml
+          cd testDirectory
+          ls
+          #go test -v
+          #go run arrange.go
+          cd ..
+          ls
+          
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+  
+      - name: Run Android Tests
+        run: ./gradlew test
+        
+      - name: Build Project
+        run: ./gradlew assemble
