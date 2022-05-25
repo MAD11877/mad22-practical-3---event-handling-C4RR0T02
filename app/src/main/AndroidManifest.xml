@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADPractical">
         <activity
+            android:name=".MessageGroup"
+            android:exported="false" />
+        <activity
             android:name=".ListActivity"
             android:exported="true">
             <intent-filter>

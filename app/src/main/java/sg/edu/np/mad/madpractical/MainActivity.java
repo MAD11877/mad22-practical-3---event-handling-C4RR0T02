@@ -40,6 +40,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button messageButton = (Button) findViewById(R.id.Message);
+
+        messageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i1 = getIntent();
+                i1 = new Intent(MainActivity.this, MessageGroup.class);
+            }
+        });
+
         Intent i2 = getIntent();
         Integer number = i2.getIntExtra("rNumber", -1);
 
