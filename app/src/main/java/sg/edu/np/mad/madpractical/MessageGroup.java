@@ -12,5 +12,7 @@ public class MessageGroup extends AppCompatActivity {
         setContentView(R.layout.activity_message_group);
 
 
+
+
     }
 }

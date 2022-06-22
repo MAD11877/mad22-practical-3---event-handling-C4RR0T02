@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         messageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i1 = getIntent();
-                i1 = new Intent(MainActivity.this, MessageGroup.class);
+                Intent i1 = new Intent(MainActivity.this, MessageGroup.class);
+                startActivity(i1);
             }
         });
 
