@@ -30,7 +30,6 @@
         android:layout_height="633dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/group2">
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/group2"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
